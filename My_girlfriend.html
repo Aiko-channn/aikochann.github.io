@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #5a3d7a;
+            background-image: radial-gradient(circle at 30% 20%, #6e4b92 0%, #5a3d7a 45%, #432c5e 100%);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            padding: 60px 20px;
+        }
+
+        
+        .letter-wrapper {
+            position: relative;
+            width: 560px;
+            max-width: 100%;
+            filter: drop-shadow(0 16px 26px rgba(20, 8, 35, 0.45))
+                    drop-shadow(0 2px 5px rgba(20, 8, 35, 0.3));
+        }
+
+       
+        .letter-container {
+            position: relative;
+            min-height: 720px;
+            background: linear-gradient(105deg,
+                #f6ecd8 0%,
+                #fdf7e8 16%,
+                #f8eeda 45%,
+                #f2e4f0 78%,
+                #e9d6ec 100%);
+            padding: 70px 76px 70px 104px;
+            clip-path: url(#torn-book-edge);
+        }
+
+        .letter-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            background:
+                linear-gradient(to right, rgba(60, 30, 80, 0.20) 0%, rgba(60, 30, 80, 0.05) 5%, transparent 10%),
+                linear-gradient(to right, transparent 10%, rgba(255, 255, 255, 0.35) 14%, transparent 19%),
+                radial-gradient(ellipse at 100% 100%, rgba(109, 40, 217, 0.10), transparent 45%);
+        }
+
+        
+        .fringe-left {
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 12px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+            background: repeating-linear-gradient(
+                4deg,
+                transparent 0px,
+                transparent 7px,
+                rgba(255, 250, 235, 0.9) 7px,
+                rgba(255, 250, 235, 0.9) 8.5px,
+                transparent 8.5px,
+                transparent 15px
+            );
+            -webkit-mask-image: linear-gradient(to right, transparent, rgba(0,0,0,0.9));
+                    mask-image: linear-gradient(to right, transparent, rgba(0,0,0,0.9));
+        }
+
+        
+        .bleed-through {
+            position: absolute;
+            inset: 70px 60px 70px 104px;
+            transform: scaleX(-1);
+            opacity: 0.05;
+            opacity: 0.055;
+            color: #3d1663;
+            font-size: 15px;
+            line-height: 2.05;
+            letter-spacing: 0.4px;
+            text-indent: 2em;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .tulip {
+            position: absolute;
+            top: 62px;
+            left: 36px;
+            width: 50px;
+            height: 170px;
+            z-index: 2;
+        }
+
+        .tulip svg { width: 100%; height: 100%; }
+
+        .content { position: relative; z-index: 2; }
+
+        .date {
+            text-align: right;
+            font-size: 14px;
+            color: #7c4da8;
+            margin-bottom: 40px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .salutation {
+            font-size: 22px;
+            color: #4a1d73;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .body-text {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #4a3260;
+            margin-bottom: 36px;
+            font-weight: 400;
+        }
+
+        .body-text p { margin-bottom: 20px; text-indent: 2em; }
+
+        .body-text p:first-child {
+            font-weight: 600;
+            color: #3d1663;
+            font-size: 18px;
+        }
+
+        .closing {
+            font-size: 20px;
+            color: #4a1d73;
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        .signature {
+            font-size: 24px;
+            color: #4a1d73;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .line {
+            width: 40px;
+            height: 1px;
+            background-color: #7c4da8;
+            margin: 30px 0;
+        }
+
+        .pencil-mark {
+            position: absolute;
+            bottom: 46px;
+            right: 54px;
+            font-size: 11px;
+            color: #7c4da8;
+            font-style: italic;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        @media (max-width: 620px) {
+            .letter-container { padding: 60px 34px 60px 62px; }
+            .tulip { left: 12px; top: 55px; transform: scale(0.8); transform-origin: top left; }
+            .bleed-through { inset: 60px 34px 60px 62px; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <clipPath id="torn-book-edge" clipPathUnits="objectBoundingBox">
+                <path d="M0.055,0 L1,0 L1,1 L0.045,1
+                         L0.012,0.972 L0.052,0.945 L0.006,0.916 L0.048,0.886
+                         L0.010,0.856 L0.055,0.826 L0.014,0.796 L0.050,0.766
+                         L0.005,0.736 L0.046,0.706 L0.016,0.676 L0.058,0.646
+                         L0.008,0.616 L0.044,0.586 L0.012,0.556 L0.054,0.526
+                         L0.006,0.496 L0.048,0.466 L0.018,0.436 L0.060,0.406
+                         L0.010,0.376 L0.046,0.346 L0.014,0.316 L0.056,0.286
+                         L0.007,0.256 L0.050,0.226 L0.016,0.196 L0.052,0.166
+                         L0.009,0.136 L0.044,0.106 L0.012,0.076 L0.050,0.046 Z"/>
+            </clipPath>
+        </defs>
+    </svg>
+
+    <div class="letter-wrapper">
+        <div class="fringe-left"></div>
+
+        <div class="letter-container">
+            <!-- Ghost text from the reverse side of the page -->
+            <div class="bleed-through" aria-hidden="true">
+                Chapter Nine. And so the evening settled over the house like water, and
+                every window held a small yellow lamp, and she thought of him in the way one
+                thinks of weather — not as a thing that happens but as a climate one lives inside.
+                There had been letters before this one, letters folded into books and letters
+                burned in sinks, but this letter was different because it told no news whatsoever.
+                It said only what had always been true and had never once required proof:
+                that love is not a grand event but a thousand ordinary ones, repeated until they
+                become a life. Outside, the last light went violet, then gray, then to stars,
+                and the house kept its small lamps burning, and he read her words twice,
+                and understood them differently each time.
+            </div>
+
+            <!-- Purple Tulip SVG -->
+            <div class="tulip">
+                <svg viewBox="0 0 50 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Stem -->
+                    <path d="M25 170 C25 170, 22 130, 23 100 C24 70, 26 50, 25 30"
+                          stroke="#7f9e6e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+                    <!-- Left leaf -->
+                    <path d="M23 120 C18 110, 8 105, 5 108 C8 105, 18 108, 23 115 Z"
+                          fill="#8fae7c" opacity="0.85"/>
+
+                    <!-- Right leaf -->
+                    <path d="M24 100 C30 90, 40 86, 44 89 C40 86, 30 90, 24 96 Z"
+                          fill="#8fae7c" opacity="0.85"/>
+
+                    <!-- Sepal / outer petals -->
+                    <path d="M25 30 C18 22, 12 14, 14 8 C16 2, 22 5, 25 12 C28 5, 34 2, 36 8 C38 14, 32 22, 25 30 Z"
+                          fill="#9966cc" opacity="0.65"/>
+
+                    <!-- Main petals -->
+                    <path d="M25 28 C20 20, 15 12, 17 6 C19 0, 23 3, 25 10 C27 3, 31 0, 33 6 C35 12, 30 20, 25 28 Z"
+                          fill="#6d28d9" opacity="0.95"/>
+
+                    <!-- Inner petal -->
+                    <path d="M25 26 C22 19, 19 13, 20 8 C21 4, 24 6, 25 11 C26 6, 29 4, 30 8 C31 13, 28 19, 25 26 Z"
+                          fill="#8347e0" opacity="0.85"/>
+
+                    <!-- Highlight -->
+                    <path d="M23 22 C21 17, 20 13, 21 10"
+                          stroke="#c4a0f0" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+                    <!-- Bud tip -->
+                    <ellipse cx="25" cy="7" rx="2.5" ry="3.5" fill="#8347e0" opacity="0.6"/>
+                </svg>
+            </div>
+
+            <div class="content">
+                <div class="date">October 28, 2026</div>
+
+                <div class="salutation">My Dearest,</div>
+
+                <div class="line"></div>
+
+                <div class="body-text">
+                    <p>I love you. It is a simple sentence, and I mean it simply.</p>
+
+                    <p>I love how easy it is to be with you. We can do nothing at all and it still feels like enough. A quiet evening, a short walk, a bad movie. You make ordinary days matter.</p>
+
+                    <p>I love your laugh. It fills the room, and I will do almost anything to hear it.</p>
+
+                    <p>I love that you see me. You notice when I am tired before I say it. You know when my smile is real. With you, I do not have to pretend.</p>
+
+                    <p>I love how you handle the hard days. We do not always agree, but you listen, you try, and you care more about us than about being right. I try to do the same.</p>
+
+                    <p>You have made me kinder and more patient. You have made me want to be better.</p>
+
+                    <p>I do not need a big picture of the future. I just know you are in every version of it I imagine. Ordinary days, with you.</p>
+
+                    <p>So this is what I mean when I say I love you. You are my home, my favorite person, and my first choice. Every day.</p>
+
+                    <p>Thank you for being you.</p>
+                </div>
+
+                <div class="closing">With all my love,</div>
+                <div class="signature">Forever Yours</div>
+            </div>
+
+            <div class="pencil-mark">✿</div>
+        </div>
+    </div>
+
+</body>
+</html>
